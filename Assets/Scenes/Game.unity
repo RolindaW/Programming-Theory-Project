@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: e90ac6c2b0e54e343a664e71277753a3, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -899,6 +899,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameText: {fileID: 273623986}
+  gameOverScreen: {fileID: 1426140779}
+  enemyPrefabs:
+  - {fileID: 1934743409303446877, guid: 44b6aadb5188b914aa0ecb9bf518361c, type: 3}
+  - {fileID: 1196096926367011295, guid: 730feba8e02a1884cbbc3387e5c337ff, type: 3}
 --- !u!4 &946254548
 Transform:
   m_ObjectHideFlags: 0
