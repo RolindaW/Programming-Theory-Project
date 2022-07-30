@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,9 +15,15 @@ public class MainMenuManager : MonoBehaviour
     private const float FOOTER_MESSAGE_DISPLAY_TIME = 2.5f;
     private const string ERROR_NOT_VALID_NAME = "'{0}' is not a valid name.";
     
+    [SerializeField] private TextMeshProUGUI highScoreText;
     [SerializeField] private TextMeshProUGUI footerText;
     [SerializeField] private TMP_InputField nameInput;
-    
+
+    private void Start()
+    {
+        highScoreText.text = string.Format("High Score: {0} - {1}", ConfigurationManager.Instance.HighScoreName, ConfigurationManager.Instance.HighScoreValue);
+    }
+
     public void StartGame()
     {
         if (ConfigurationManager.Instance.IsValidName(nameInput.text))
