@@ -6,7 +6,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    private const int MAX_ENEMY_NUMBER = 3;
+    private const int MAX_ENEMY_NUMBER = 10;
 
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI healthText;
@@ -92,6 +92,16 @@ public class GameManager : MonoBehaviour
     {
         score += scoreToAdd;
 
+        UpdateScoreText(score);
+    }
+    
+    public void UpdateScoreText(int score)
+    {
         scoreText.text = string.Format("Score: {0}", score);
+    }
+
+    public void UpdateHealthText(int health)
+    {
+        healthText.text = string.Format("Health: {0}", health);
     }
 }

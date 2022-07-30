@@ -22,7 +22,10 @@ public abstract class Enemy : MonoBehaviour
     
     private void FixedUpdate()
     {
-        MoveTowardsPlayer();
+        if (gameManager.IsGameActive)
+        {
+            MoveTowardsPlayer();
+        }
     }
 
     protected abstract void MoveTowardsPlayer();
@@ -36,6 +39,11 @@ public abstract class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public int SpreadDamage()
+    {
+        return _damage;
     }
 
     private void OnDestroy()

@@ -30,8 +30,8 @@ public class ProjectileController : MonoBehaviour
 
     private bool IsOutOfBounds()
     {
-        float xBound = 20.0f;
-        float zBound = 20.0f;
+        float xBound = 30.0f;
+        float zBound = 30.0f;
         
         return IsOutOfSymmetricBound(gameObject.transform.position.x, xBound) || IsOutOfSymmetricBound(gameObject.transform.position.z, zBound);
     }

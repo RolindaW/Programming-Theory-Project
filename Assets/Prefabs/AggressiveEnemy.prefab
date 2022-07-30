@@ -113,7 +113,7 @@ MonoBehaviour:
   _endurance: 2
   _damage: 5
   _score: 10
-  moveSpeed: 3
+  moveSpeed: 3.5
 --- !u!54 &1771530216443499814
 Rigidbody:
   m_ObjectHideFlags: 0

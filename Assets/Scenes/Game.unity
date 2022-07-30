@@ -768,6 +768,7 @@ GameObject:
   - component: {fileID: 531154595}
   - component: {fileID: 531154594}
   - component: {fileID: 531154593}
+  - component: {fileID: 531154598}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -787,6 +788,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fb69804e7c48084da3c0f60ca8c717b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _health: 40
+  _endurance: 1
   projectile: {fileID: 7759435325320252283, guid: a1061ba7b487fae4a8934f42425a6586, type: 3}
 --- !u!143 &531154594
 CharacterController:
@@ -869,6 +872,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &531154598
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531154592}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &946254546
 GameObject:
   m_ObjectHideFlags: 0
