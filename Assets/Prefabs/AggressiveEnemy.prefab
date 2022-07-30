@@ -110,10 +110,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 50
-  _endurance: 2
-  _damage: 5
+  _endurance: 0
+  _damage: 20
   _score: 10
-  moveSpeed: 3.5
+  moveSpeed: 4
 --- !u!54 &1771530216443499814
 Rigidbody:
   m_ObjectHideFlags: 0
