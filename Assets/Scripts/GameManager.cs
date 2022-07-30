@@ -28,12 +28,12 @@ public class GameManager : MonoBehaviour
         enemies = new GameObject("Enemies");
         enemies.transform.position = Vector3.zero;
 
+        AddScore(0);
         if (ConfigurationManager.Instance != null)
         {
-            nameText.text = ConfigurationManager.Instance.Name;
+            UpdateNameText(ConfigurationManager.Instance.Name);
+            UpdateHighScoreText(ConfigurationManager.Instance.HighScoreName, ConfigurationManager.Instance.HighScoreValue);
         }
-
-        AddScore(0);
     }
 
     // Update is called once per frame
@@ -74,7 +74,17 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         IsGameActive = false;
-        
+
+        if (ConfigurationManager.Instance != null)
+        {
+            if (score >= ConfigurationManager.Instance.HighScoreValue)
+            {
+                ConfigurationManager.Instance.HighScoreValue = score;
+                ConfigurationManager.Instance.HighScoreName = ConfigurationManager.Instance.Name;
+                ConfigurationManager.Instance.SaveData();
+            }
+        }
+
         gameOverScreen.SetActive(true);
     }
 
@@ -95,7 +105,7 @@ public class GameManager : MonoBehaviour
         UpdateScoreText(score);
     }
     
-    public void UpdateScoreText(int score)
+    private void UpdateScoreText(int score)
     {
         scoreText.text = string.Format("Score: {0}", score);
     }
@@ -103,5 +113,15 @@ public class GameManager : MonoBehaviour
     public void UpdateHealthText(int health)
     {
         healthText.text = string.Format("Health: {0}", health);
+    }
+    
+    private void UpdateNameText(string name)
+    {
+        nameText.text = name;
+    }
+    
+    private void UpdateHighScoreText(string highScoreName, int highScoreValue)
+    {
+        highScoreText.text = string.Format("High Score: {0} - {1}", highScoreName, highScoreValue);
     }
 }

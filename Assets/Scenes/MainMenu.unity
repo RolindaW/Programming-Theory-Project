@@ -517,6 +517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68431df7d0a31cf438dd779cee56a21f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highScoreText: {fileID: 558103972}
   footerText: {fileID: 970413335}
   nameInput: {fileID: 1097668758}
 --- !u!4 &571845155
@@ -1988,6 +1989,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 513b57631e6649347ad116442352927b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HighScoreName: 
+  HighScoreValue: 0
 --- !u!4 &1946527836
 Transform:
   m_ObjectHideFlags: 0
