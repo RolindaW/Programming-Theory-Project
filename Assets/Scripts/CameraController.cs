@@ -12,7 +12,7 @@ public class CameraController : MonoBehaviour
     {
         target = GameObject.FindWithTag("Player");
         positionOffset = new Vector3(0, 8, -10);
-        gameObject.transform.rotation = Quaternion.Euler(40, 0, 0);
+        gameObject.transform.rotation = Quaternion.Euler(35, 0, 0);
     }
 
     // Update is called once per frame
