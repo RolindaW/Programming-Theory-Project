@@ -899,6 +899,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameText: {fileID: 273623986}
+  healthText: {fileID: 1618466791}
+  scoreText: {fileID: 1278711617}
+  highScoreText: {fileID: 1056334641}
   gameOverScreen: {fileID: 1426140779}
   enemyPrefabs:
   - {fileID: 1934743409303446877, guid: 44b6aadb5188b914aa0ecb9bf518361c, type: 3}

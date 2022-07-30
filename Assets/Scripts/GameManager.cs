@@ -6,14 +6,17 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    private const int MAX_ENEMY_NUMBER = 5;
-    
-    
+    private const int MAX_ENEMY_NUMBER = 3;
+
     [SerializeField] private TextMeshProUGUI nameText;
+    [SerializeField] private TextMeshProUGUI healthText;
+    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI highScoreText;
     [SerializeField] private GameObject gameOverScreen;
     [SerializeField] private List<GameObject> enemyPrefabs;
 
     private GameObject enemies;
+    private int score;
     
     public bool IsGameActive { get; private set; }
     
@@ -29,6 +32,8 @@ public class GameManager : MonoBehaviour
         {
             nameText.text = ConfigurationManager.Instance.Name;
         }
+
+        AddScore(0);
     }
 
     // Update is called once per frame
@@ -81,5 +86,12 @@ public class GameManager : MonoBehaviour
     public void ReturnToMainMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void AddScore(int scoreToAdd)
+    {
+        score += scoreToAdd;
+
+        scoreText.text = string.Format("Score: {0}", score);
     }
 }
