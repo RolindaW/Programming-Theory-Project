@@ -7,8 +7,8 @@ public class ProjectileController : MonoBehaviour
 {
     private const float MOVE_SPEED = 20.0f;
 
-    private float xBound = 20;
-    private float zBound = 20;
+    private float xBound = 25;
+    private float zBound = 25;
 
     // Start is called before the first frame update
     void Start()
