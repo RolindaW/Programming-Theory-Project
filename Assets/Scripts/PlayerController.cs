@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -7,6 +8,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private const float MOVE_SPEED = 5.0f;
+    
+    [SerializeField] protected int _health;
+    [SerializeField] protected int _endurance; 
 
     [SerializeField] private GameObject projectile;
     private float projectileSpawnForwardOffsetValue = 1.0f;
@@ -23,6 +27,8 @@ public class PlayerController : MonoBehaviour
         gameManager = GameObject.FindWithTag("GameController").GetComponent<GameManager>();
         mainCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
         characterController = gameObject.GetComponent<CharacterController>();
+        
+        gameManager.UpdateHealthText(_health);
     }
 
     // Update is called once per frame
@@ -80,5 +86,34 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 projectileSpawnForwardOffset = projectileSpawnForwardOffsetValue * (lookAtPosition - gameObject.transform.position).normalized;
         Instantiate(projectile, gameObject.transform.position + projectileSpawnForwardOffset, gameObject.transform.rotation);
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Enemy enemy = other.gameObject.GetComponent<Enemy>();
+            HandleDamage(enemy.SpreadDamage());
+            
+            Rigidbody enemyRb = other.GetComponent<Rigidbody>();
+            if (enemyRb != null)
+            {
+                Vector3 dashForce = 100.0f * (other.transform.position - gameObject.transform.position).normalized;
+                enemyRb.AddForce(dashForce, ForceMode.Impulse);
+            }
+        }
+    }
+    
+    private void HandleDamage(int damage)
+    {
+        int actualDamage = Mathf.Clamp(damage - _endurance, 0, damage);
+        _health -= actualDamage;
+        
+        gameManager.UpdateHealthText(_health);
+
+        if (_health <= 0)
+        {
+            gameManager.GameOver();
+        }
     }
 }

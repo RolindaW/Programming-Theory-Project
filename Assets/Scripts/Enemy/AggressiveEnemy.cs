@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class AggressiveEnemy : Enemy
 {
-    private const float BASE_MOVE_SPEED = 1.0f;
-    
-    [SerializeField] protected float moveSpeed = BASE_MOVE_SPEED;
+    [SerializeField] protected float moveSpeed;
     
     protected override void MoveTowardsPlayer()
     {

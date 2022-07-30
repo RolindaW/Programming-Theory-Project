@@ -7,9 +7,8 @@ public class ProjectileController : MonoBehaviour
 {
     private const float MOVE_SPEED = 20.0f;
 
-    private float xBound = 25;
-    private float zBound = 25;
-
+    [SerializeField] private int _damage;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -31,11 +30,25 @@ public class ProjectileController : MonoBehaviour
 
     private bool IsOutOfBounds()
     {
+        float xBound = 30.0f;
+        float zBound = 30.0f;
+        
         return IsOutOfSymmetricBound(gameObject.transform.position.x, xBound) || IsOutOfSymmetricBound(gameObject.transform.position.z, zBound);
     }
 
     private bool IsOutOfSymmetricBound(float value, float bound)
     {
         return Math.Abs(value) > Math.Abs(bound);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Enemy enemy = other.gameObject.GetComponent<Enemy>();
+            enemy.HandleDamage(_damage);
+        }
+        
+        Destroy(gameObject);
     }
 }
